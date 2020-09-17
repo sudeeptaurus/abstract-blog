@@ -1,4 +1,8 @@
-<?php include("includes/_header.php"); ?>
+<?php include("../path.php"); ?>
+
+<?php include(ROOT_PATH . "/controllers/posts.php"); ?>
+
+<?php include(ROOT_PATH . "/admin/includes/_header.php"); ?>
 
 <div class="container">
     <div class="row">
@@ -22,30 +26,22 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>This is the first Post</td>
-                        <td>Sudeep</td>
-                        <td><a href="#">Edit</a></td>
-                        <td><a href="#">Delete</a></td>
-                        <td><a href="#">Publish</a></td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>This is the second Post</td>
-                        <td>Sudeep</td>
-                        <td><a href="#">Edit</a></td>
-                        <td><a href="#">Delete</a></td>
-                        <td><a href="#">Publish</a></td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>This is the third Post</td>
-                        <td>Sudeep</td>
-                        <td><a href="#">Edit</a></td>
-                        <td><a href="#">Delete</a></td>
-                        <td><a href="#">Publish</a></td>
-                    </tr>
+
+                    <?php foreach ($posts as $key => $post) : ?>
+                        <tr>
+                            <td><?php echo $key + 1; ?></td>
+                            <td><?php echo $post['title']; ?></td>
+                            <td>Sudeep</td>
+                            <td><a href="#"><button class="btn btn-success btn-sm">Edit</button></a></td>
+                            <td><a href="#"><button class="btn btn-danger btn-sm">Delete</button></a></td>
+                            <?php if ($post['published']) : ?>
+                                <td><a href="#" class="unpublish"><button class="btn btn-warning btn-sm">unpublish</button></a></td>
+                            <?php else : ?>
+                                <td><a href="#" class="publish"><button class="btn btn-primary btn-sm">publish</button></a></td>
+                            <?php endif; ?>
+                        </tr>
+                    <?php endforeach; ?>
+
                 </tbody>
             </table>
         </div>

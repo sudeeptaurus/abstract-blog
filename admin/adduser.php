@@ -1,4 +1,6 @@
-<?php include("includes/_header.php"); ?>
+<?php include("../path.php"); ?>
+
+<?php include(ROOT_PATH . "/admin/includes/_header.php"); ?>
 
 <div class="container">
     <div class="row">
@@ -51,4 +53,4 @@
     </div>
 </div>
 
-<?php include("includes/_footer.php"); ?>
+<?php include(ROOT_PATH . "/admin/includes/_footer.php"); ?>

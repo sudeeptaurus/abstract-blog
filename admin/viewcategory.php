@@ -1,3 +1,7 @@
+<?php include("../path.php"); ?>
+
+<?php include(ROOT_PATH . "/controllers/topics.php"); ?>
+
 <?php include("includes/_header.php"); ?>
 
 <div class="container">
@@ -8,6 +12,7 @@
     </div>
 </div>
 
+<?php include(ROOT_PATH . "/includes/_messages.php"); ?>
 
 <div class="container">
     <div class="row">
@@ -21,24 +26,16 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Poetry</td>
-                        <td><a href="#"><button class="btn btn-success btn-sm">Edit</button></a></td>
-                        <td><a href="#"><button class="btn btn-danger btn-sm">Delete</button></a></td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Life Lessons</td>
-                        <td><a href="#"><button class="btn btn-success btn-sm">Edit</button></a></td>
-                        <td><a href="#"><button class="btn btn-danger btn-sm">Delete</button></a></td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Bad Luck</td>
-                        <td><a href="#"><button class="btn btn-success btn-sm">Edit</button></a></td>
-                        <td><a href="#"><button class="btn btn-danger btn-sm">Delete</button></a></td>
-                    </tr>
+
+                    <?php foreach ($topics as $key => $topic) : ?>
+                        <tr>
+                            <td><?php echo $key + 1; ?></td>
+                            <td><?php echo $topic['name']; ?></td>
+                            <td><a href="editcategory.php?id=<?php echo $topic['id']; ?>"><button class="btn btn-success btn-sm">Edit</button></a></td>
+                            <td><a href="viewcategory.php?del_id=<?php echo $topic['id']; ?>"><button class="btn btn-danger btn-sm">Delete</button></a></td>
+                        </tr>
+                    <?php endforeach; ?>
+
                 </tbody>
             </table>
         </div>

@@ -1,4 +1,8 @@
-<?php include("includes/_header.php"); ?>
+<?php include("../path.php"); ?>
+
+<?php include(ROOT_PATH . "/controllers/posts.php"); ?>
+
+<?php include(ROOT_PATH . "/admin/includes/_header.php"); ?>
 
 <div class="container">
     <div class="row">
@@ -22,58 +26,26 @@
                     <textarea class="form-control form-control-lg mb-3 text-input" name="body" id="body"></textarea>
                 </div>
                 <div>
+                    <label>Image</label>
+                    <input type="file" name="image" id="" class="form-control form-control-lg mb-3 text-input">
+                </div>
+                <div>
                     <label>Topic</label>
-                    <select name="topic" class="form-control form-control-lg mb-3 text-input">
-                        <option value="Poetry">Poetry</option>
-                        <option value="Life Lessons">Life Lessons</option>
+                    <select name="topic_id" class="form-control form-control-lg mb-3 text-input">
+                        <option value=""></option>
+
+                        <?php foreach ($topics as $key => $topic) : ?>
+                            <option value="<?php echo $topic['id']; ?>"><?php echo $topic['name']; ?></option>
+                        <?php endforeach; ?>
+
                     </select>
                 </div>
                 <div>
-                    <button type="submit" class="btn btn-big btn-info">Add Post</button>
+                    <button type="submit" name="add-post" class="btn btn-big btn-info">Add Post</button>
                 </div>
             </form>
         </div>
     </div>
 </div>
 
-
-<script>
-    ClassicEditor.create(document.querySelector("#body"), {
-        toolbar: [
-            "heading",
-            "|",
-            "bold",
-            "italic",
-            "link",
-            "bulletedList",
-            "numberedList",
-            "blockQuote",
-        ],
-        heading: {
-            options: [{
-                    model: "paragraph",
-                    title: "Paragraph",
-                    class: "ck-heading_paragraph"
-                },
-                {
-                    model: "heading1",
-                    view: "h1",
-                    title: "Heading 1",
-                    class: "ck-heading_heading1",
-                },
-                {
-                    model: "heading2",
-                    view: "h2",
-                    title: "Heading 2",
-                    class: "ck-heading_heading2",
-                },
-            ],
-        },
-    }).catch((error) => {
-        console.log(error);
-    });
-</script>
-
-<script src="https://cdn.ckeditor.com/ckeditor5/22.0.0/classic/ckeditor.js"></script>
-
-<?php include("includes/_footer.php"); ?>
+<?php include(ROOT_PATH . "/admin/includes/_footer.php"); ?>

@@ -1,4 +1,8 @@
-<?php include("includes/_header.php"); ?>
+<?php include("../path.php"); ?>
+
+<?php include(ROOT_PATH . "/controllers/topics.php"); ?>
+
+<?php include(ROOT_PATH . "/admin/includes/_header.php"); ?>
 
 <div class="container">
     <div class="row">
@@ -8,6 +12,7 @@
     </div>
 </div>
 
+<?php include(ROOT_PATH . "/helpers/formErrors.php"); ?>
 
 <div class="container">
     <div class="row">
@@ -15,14 +20,14 @@
             <form action="addcategory.php" method="post" class="add-new-post">
                 <div>
                     <label>Name</label>
-                    <input class="form-control form-control-lg mb-3 text-input" type="text" name="name">
+                    <input class="form-control form-control-lg mb-3 text-input" type="text" name="name" value="<?php echo $name; ?>">
                 </div>
                 <div>
                     <label>Description</label>
-                    <textarea class="form-control form-control-lg mb-3 text-input" name="description" id="body"></textarea>
+                    <textarea class="form-control form-control-lg mb-3 text-input" name="description" id="body" value="<?php echo $description; ?>"></textarea>
                 </div>
                 <div>
-                    <button type="submit" class="btn btn-big btn-info">Add Category</button>
+                    <button type="submit" name="add-topic" class="btn btn-big btn-info">Add Category</button>
                 </div>
             </form>
         </div>
@@ -31,4 +36,4 @@
 
 
 
-<?php include("includes/_footer.php"); ?>
+<?php include(ROOT_PATH . "/admin/includes/_footer.php"); ?>

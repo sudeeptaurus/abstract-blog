@@ -49,6 +49,25 @@
                 <li><a href="styles.html" title="">Subscription</a></li>
                 <li><a href="about.html" title="">About</a></li>
                 <li><a href="contact.html" title="">Contact</a></li>
+
+                <?php if (isset($_SESSION['id'])) : ?>
+                    <li class="has-children">
+                        <a href="#0">
+                            <i class="fa fa-user"></i>
+                            <?php echo $_SESSION['username']; ?>
+                            <!-- <i class="fa fa-chevron-down"></i> -->
+                        </a>
+                        <ul class="sub-menu">
+                            <?php if ($_SESSION['admin']) : ?>
+                                <li><a href="<?php echo BASE_URL . '/admin/dashboard.php' ?>">Dashboard</a></li>
+                            <?php endif; ?>
+                            <li><a href="<?php echo BASE_URL . '/logout.php' ?>" class="logout">Logout</a></li>
+                        </ul>
+                    </li>
+                <?php else : ?>
+                    <li><a href="<?php echo BASE_URL . '/login.php' ?>"><i class="fa fa-sign-in" aria-hidden="true"></i>Login</a></li>
+                    <li><a href="<?php echo BASE_URL . '/register.php' ?>">SignUp</a></li>
+                <?php endif; ?>
             </ul> <!-- end header__nav -->
 
             <a href="#0" title="Close Menu" class="s-header__overlay-close close-mobile-menu">Close</a>

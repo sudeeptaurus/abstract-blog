@@ -1,5 +1,6 @@
 <?php
 
+session_start();
 require('connect.php');
 
 function dd($value)
@@ -111,21 +112,31 @@ function update($table, $id, $data)
     }
 
     $sql = $sql . " WHERE id=?";
+    $data['id'] = $id;
     // dd($sql);
     $stmt = executeQuery($sql, $data);
-    $id = $stmt->insert_id;
-    return $id;
+    return $stmt->affected_rows;
 }
 
+function delete($table, $id)
+{
+    global $conn;
+    // $sql = "DELETE FROM users WHERE id=?";
+    $sql = "DELETE FROM $table WHERE id=?";
 
-$data = [
-    'username' => 'Sudeep Mohan',
-    'admin' => 1,
-    'email' => 'sudeep@gmail.com',
-    'password' => 'taurus@123'
-];
+    $stmt = executeQuery($sql, ['id' => $id]);
+    return $stmt->affected_rows;
+}
+
+// $data = [
+//     'username' => 'Sudeep Mohan',
+//     'admin' => 1,
+//     'email' => 'sudeep@gmail.com',
+//     'password' => 'taurus@123'
+// ];
 
 // $users = selectOne('users', $conditions);
 // $id = create('users', $data);
-$id = update('users', 2, $data);
-dd($id);
+// $id = update('users', 2, $data);
+// $id = delete('users', 2);
+// dd($id);

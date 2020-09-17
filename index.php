@@ -1,9 +1,14 @@
-<?php include "path.php" ?>
+<?php
+include("path.php");
+include(ROOT_PATH . "/database/db.php");
+?>
 
 <?php include(ROOT_PATH . "/includes/_header.php"); ?>
 
 
 <?php include(ROOT_PATH . "/includes/_navigation.php"); ?>
+<?php include(ROOT_PATH . "/includes/_messages.php"); ?>
+
 
 <!-- masonry
     ================================================== -->

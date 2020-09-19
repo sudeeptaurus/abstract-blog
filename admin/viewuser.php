@@ -1,3 +1,7 @@
+<?php include("../path.php"); ?>
+
+<?php include(ROOT_PATH . "/controllers/users.php"); ?>
+
 <?php include("includes/_header.php"); ?>
 
 <div class="container">
@@ -8,6 +12,7 @@
     </div>
 </div>
 
+<?php include(ROOT_PATH . "/includes/_messages.php"); ?>
 
 <div class="container">
     <div class="row">
@@ -15,34 +20,22 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
+                        <th>S.No.</th>
                         <th>Username</th>
                         <th>Email</th>
-                        <th>Role</th>
-                        <th>Action</th>
+                        <th colspan="2">Action</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>John</td>
-                        <td>john@example.com</td>
-                        <td>Admin</td>
-                        <td><a href="#"><button class="btn btn-success btn-sm">Edit</button></a></td>
-                        <td><a href="#"><button class="btn btn-danger btn-sm">Delete</button></a></td>
-                    </tr>
-                    <tr>
-                        <td>Mary</td>
-                        <td>mary@example.com</td>
-                        <td>Admin</td>
-                        <td><a href="#"><button class="btn btn-success btn-sm">Edit</button></a></td>
-                        <td><a href="#"><button class="btn btn-danger btn-sm">Delete</button></a></td>
-                    </tr>
-                    <tr>
-                        <td>July</td>
-                        <td>july@example.com</td>
-                        <td>Admin</td>
-                        <td><a href="#"><button class="btn btn-success btn-sm">Edit</button></a></td>
-                        <td><a href="#"><button class="btn btn-danger btn-sm">Delete</button></a></td>
-                    </tr>
+                    <?php foreach ($admin_users as $key => $user) : ?>
+                        <tr>
+                            <td><?php echo $key + 1; ?></td>
+                            <td><?php echo $user['username']; ?></td>
+                            <td><?php echo $user['email']; ?></td>
+                            <td><a href="edituser.php?id=<?php echo $user['id']; ?>"><button class="btn btn-success btn-sm">Edit</button></a></td>
+                            <td><a href="viewuser.php?delete_id=<?php echo $user['id']; ?>"><button class="btn btn-danger btn-sm">Delete</button></a></td>
+                        </tr>
+                    <?php endforeach; ?>
                 </tbody>
             </table>
         </div>

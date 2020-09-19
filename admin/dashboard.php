@@ -1,4 +1,8 @@
-<?php include("includes/_header.php"); ?>
+<?php include("../path.php"); ?>
+
+<?php include(ROOT_PATH . "/database/db.php"); ?>
+
+<?php include(ROOT_PATH . "/admin/includes/_header.php"); ?>
 
 <!-- Begin Page Content -->
 <div class="container-fluid">

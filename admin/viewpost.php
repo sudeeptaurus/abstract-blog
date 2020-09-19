@@ -12,6 +12,7 @@
     </div>
 </div>
 
+<?php include(ROOT_PATH . "/includes/_messages.php"); ?>
 
 <div class="container">
     <div class="row">
@@ -32,12 +33,12 @@
                             <td><?php echo $key + 1; ?></td>
                             <td><?php echo $post['title']; ?></td>
                             <td>Sudeep</td>
-                            <td><a href="#"><button class="btn btn-success btn-sm">Edit</button></a></td>
-                            <td><a href="#"><button class="btn btn-danger btn-sm">Delete</button></a></td>
+                            <td><a href="editpost.php?id=<?php echo $post['id']; ?>"><button class="btn btn-success btn-sm">Edit</button></a></td>
+                            <td><a href="editpost.php?delete_id=<?php echo $post['id']; ?>"><button class="btn btn-danger btn-sm">Delete</button></a></td>
                             <?php if ($post['published']) : ?>
-                                <td><a href="#" class="unpublish"><button class="btn btn-warning btn-sm">unpublish</button></a></td>
+                                <td><a href="editpost.php?published=0&p_id=<?php echo $post['id']; ?>" class="unpublish"><button class="btn btn-warning btn-sm">unpublish</button></a></td>
                             <?php else : ?>
-                                <td><a href="#" class="publish"><button class="btn btn-primary btn-sm">publish</button></a></td>
+                                <td><a href="editpost.php?published=1&p_id=<?php echo $post['id']; ?>" class="publish"><button class="btn btn-primary btn-sm">publish</button></a></td>
                             <?php endif; ?>
                         </tr>
                     <?php endforeach; ?>

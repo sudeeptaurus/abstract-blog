@@ -66,7 +66,7 @@
                     </li>
                 <?php else : ?>
                     <li><a href="<?php echo BASE_URL . '/login.php' ?>"><i class="fa fa-sign-in" aria-hidden="true"></i>Login</a></li>
-                    <li><a href="<?php echo BASE_URL . '/register.php' ?>">SignUp</a></li>
+                    <!-- <li><a href="<--?php echo BASE_URL . '/register.php' ?>">SignUp</a></li> -->
                 <?php endif; ?>
             </ul> <!-- end header__nav -->
 
@@ -78,12 +78,12 @@
 
         <div class="s-header__search">
 
-            <form role="search" method="get" class="s-header__search-form" action="#">
+            <form role="search" method="post" class="s-header__search-form" action="<?php echo BASE_URL . '/index.php' ?>">
                 <label>
                     <span class="hide-content">Search for:</span>
-                    <input type="search" class="s-header__search-field" placeholder="Type Your Keywords" value="" name="s" title="Search for:" autocomplete="off">
+                    <input type="search" class="s-header__search-field" placeholder="Type Your Keywords" value="" title="Search for:" autocomplete="off">
                 </label>
-                <input type="submit" class="s-header__search-submit" value="Search">
+                <input type="submit" name="search-term" class="s-header__search-submit" value="Search">
             </form>
 
             <a href="#0" title="Close Search" class="s-header__overlay-close">Close</a>
